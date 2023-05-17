@@ -12,9 +12,6 @@ from django.template import loader
 def startPage(request) : 
     return render(request, "proxymodelapp/start.html" )
 
-def homePage(request) : 
-    return render(request, "proxymodelapp/home.html" )
-
 def doctor_registration(request):
     if request.method == 'POST':
         form = DoctorRegistrationForm(request.POST)

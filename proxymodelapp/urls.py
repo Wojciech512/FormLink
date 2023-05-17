@@ -8,7 +8,6 @@ from django.conf import settings
 
 urlpatterns = [
     path("",proxy_views.startPage,name="start-page"),
-    path("home_page/",proxy_views.homePage,name="home-page"),
     path("login/", LoginView.as_view(template_name="proxymodelapp/login.html"), name="login-user"),
     path("logout/", LogoutView.as_view(template_name="proxymodelapp/logout.html"), name="logout-user"),
     path("doctor_registration/", proxy_views.doctor_registration, name="doctor-registration"),    
