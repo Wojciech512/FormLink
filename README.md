@@ -57,9 +57,19 @@ from proxymodelapp.models import *
     user4.save() 
 
 ```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+from proxymodelapp.models import *
+    user1 = Doctor.objects.create_user(
+    email = "doctorone@gmail.com" , password = "password")
+    user1.save()
+    user2 = Doctor.objects.create_user(
+    email = "doctortwo@gmail.com" , password = "password")
+    user2.save()
+    user3 = Patient.objects.create_user(
+    email = "patientone@gmail.com" , password = "password")
+    user3.save()
+    user4 = Patient.objects.create_user(
+    email = "patienttwo@gmail.com" , password = "password")
+    user4.save() 
 ```
 
   <h3>What functions are assigned to specific types of users?</h3>
