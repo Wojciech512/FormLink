@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row m-2">
             <div class="col-md-12">
-                <h2>Podgląd dostępnych plików PDF,<br> dla użytkownika: <strong>{{user}}</strong>,<br> rola: <strong>{% if user.is_authenticated %}{{type}}{% endif %}</strong></h2>
+                <h2>Podgląd dostępnych plików PDF,<br> dla użytkownika: <strong>{{user}}</strong>,<br> rola: <strong>{% if user.is_authenticated %}{{type|lower}}{% endif %}</strong></h2>
             </div>
         </div>
         <hr/>
@@ -26,16 +26,22 @@
             {% for form in forms %}
             <div class="row m-3 justify-content-center">
                 <div class="col-md-3 d-flex justify-content-center">
-                    <!-- {{profile.id}} -->
-                    {{form.pseudo_id }}.
+                    {{ forloop.counter }}.
+                    <!-- {{form.id}}.
+                    {{form.pseudo_id }}. -->
                     {{form.name}}
-                    {{form.surname}}
+                    {{form.surname}}  
                 </div>
-                <div class="col-md-2 d-flex justify-content-center">
-                    <a href="{% url 'deleteform' form.id %}" class="btn trans btn-danger">Usuń</a>
-                </div>
+                {% if user.type|lower == 'patient' %}
+                    <div class="col-md-2 d-flex justify-content-center">
+                        <a href="{% url 'deleteform' form.id %}" class="btn trans btn-danger">Usuń</a>
+                    </div>
+                {% endif %}
                 <div class="col-md-2 d-flex justify-content-center">
                     <a href="{% url 'viewform' form.id %}" class="btn trans btn-info">Podgląd</a>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center">
+                    <a href="/{{form.id}}" class="btn trans btn-success">Pobierz PDF</a>
                 </div>
             </div>
             <hr/>

@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import ItemForm
 from .models import Form, UserAccount,Doctor, Patient
 from django.db.models import Max
+import pdfkit
+from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 def startPage(request) : 
@@ -145,3 +148,20 @@ def delete_form(request,id):
 def view_form(request,id):
     user_profile = Form.objects.get(pk=id)
     return render(request,'formapp/generatedfile.html',{'user_profile':user_profile})
+
+@login_required
+def download_form(request,id):
+    user_profile = Form.objects.get(pk=id)
+    template = loader.get_template('formapp/generatedfile.html')
+    html=template.render({'user_profile':user_profile})
+    options={
+        'page-size':'Letter',
+        'encoding':"UTF-8",
+    }
+    
+    config = pdfkit.configuration(wkhtmltopdf=r'C:/Users/wwyle/OneDrive/Pulpit/wkhtmltox/bin/wkhtmltopdf.exe')
+ 
+    pdf = pdfkit.from_string(html,False,options=options,configuration=config)
+    response = HttpResponse(pdf,content_type='proxymodel/proxymodelapp')
+    response['Content-Disposition'] ='attachment;filename=formularz.pdf'
+    return response

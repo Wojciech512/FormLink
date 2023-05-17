@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 urlpatterns = [
     path("",proxy_views.startPage,name="start-page"),
     path("home_page/",proxy_views.homePage,name="home-page"),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('list/',proxy_views.list_pdfs,name='list'),
     path('delete/<int:id>/',proxy_views.delete_form,name='deleteform'),
     path('view/<int:id>/',proxy_views.view_form,name='viewform'),
+        path('<int:id>/',proxy_views.download_form,name='generateform'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
