@@ -1,5 +1,5 @@
 <h1>FormLink</h1>
-<p>To use Django PDF Generator, you need to follow these steps:</p>
+<p>To use FormLink, you need to follow these steps:</p>
 <ol>
   <li>Open the console window and run the command: <code>pip install pdfkit</code></li>
   <li>Download the wkhtmltopdf program from the website: <a href="https://wkhtmltopdf.org/downloads.html">https://wkhtmltopdf.org/downloads.html</a><br>
