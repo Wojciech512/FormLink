@@ -42,7 +42,7 @@
 
   <p>By moving to the Django shell in the terminal. Also, we can create multiple users of both types from the Django shell:</p>
   
-```ruby
+```python
 from proxymodelapp.models import *
     user1 = Doctor.objects.create_user(
     email = "doctorone@gmail.com" , password = "password")
