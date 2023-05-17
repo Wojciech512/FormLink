@@ -41,7 +41,7 @@
   <p>create a superuser who can log in to the app and can see the functionalities, for that we will create a superuser with the email (It should be noted that by default, the superuser is assigned the "PATIENT" type upon creation. If we want to change this, it should be done in the settings /admin/.):<code>python manage.py createsuperuser</code></p>
 
   <p>By moving to the Django shell in the terminal. Also, we can create multiple users of both types from the Django shell.</p>
-    ```python3
+```python
     from proxymodelapp.models import *
     user1 = Doctor.objects.create_user(
     email = "doctorone@gmail.com" , password = "password")
@@ -55,7 +55,7 @@
     user4 = Patient.objects.create_user(
     email = "patienttwo@gmail.com" , password = "password")
     user4.save()
-    ```
+```
   </code>
   <h3>What functions are assigned to specific types of users?</h3>
   <ul>
