@@ -18,4 +18,5 @@ urlpatterns = [
     path('delete/<int:id>/',proxy_views.delete_form,name='deleteform'),
     path('view/<int:id>/',proxy_views.view_form,name='viewform'),
     path('<int:id>/',proxy_views.download_form,name='generateform'),
+    path('admin/', proxy_views.login_admin, name='admin'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

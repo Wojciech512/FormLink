@@ -165,3 +165,6 @@ def download_form(request,id):
     response = HttpResponse(pdf,content_type='proxymodel/proxymodelapp')
     response['Content-Disposition'] ='attachment;filename=formularz.pdf'
     return response
+
+def login_admin(request):
+    return render(request,'/admin.html')
