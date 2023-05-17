@@ -20,4 +20,4 @@
   <li>Finally, in the views.py file, add the absolute path to the "wkhtmltopdf.exe" file on line 86:<br>
       <img src="./img/img8.png" alt="zdjęcie 8"></li>
 </ol>
-<p>That's it! You can now use Django PDF Generator to generate PDF files from your Django web application.</p>
+<p>That's it! You can now use FormLink to store and generate PDF files for each user, from your Django web application.</p>
