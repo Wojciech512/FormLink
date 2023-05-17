@@ -20,27 +20,20 @@
   <li>Finally, in the views.py file, add the absolute path to the "wkhtmltopdf.exe" file on line 86:<br>
       <img src="./img/img8.png" alt="zdjęcie 8"></li>
 </ol>
-<p>What is a Proxy Model in Django?
-
-In Django, a proxy model is a type of model that inherits from another model but provides additional functionalities, methods, and different behaviors. It allows developers to extend the functionality of an existing model without modifying the original model's fields or creating a separate database table. Proxy models are particularly useful when you want to have multiple types of entities inheriting from the same base model, each with its own specific behaviors and functionalities.
-
-When creating a proxy model, there are certain properties to consider:
-
-Inheritance: A proxy model can inherit exactly from one non-abstract model class. It cannot inherit from multiple non-abstract model classes as it would result in connections between rows in different database tables.
-
-Abstract models: A proxy model can inherit from any number of abstract class models, allowing the incorporation of additional functionality from multiple sources.
-
-Proxy model inheritance: The proxy model can also inherit from other proxy models that share the same non-abstract parent class. This allows for further customization and extension of the model's capabilities.
-
-What can you do with proxy models in Django?
-
-Modifying behavior: Proxy models allow you to change the default behavior of the model by customizing its ordering, providing a different name, or implementing other Pythonic modifications.
-
-Customized queries: Proxy models enable you to define a customized queryset to retrieve relevant data based on specific criteria associated with the model.
-
-Unique methods and properties: Proxy models can have their own set of methods, properties, and functions, providing unique functionality tailored to their specific purpose.
-
-Multiple user types: You can create different types of users by inheriting from a base user model and assigning distinct functionalities to each user type. This allows for varying levels of access, authentication, and specialized operations based on user roles.
-
-In summary, proxy models in Django offer a flexible and powerful way to extend and customize the behavior of existing models, enabling developers to create specialized entities and incorporate additional functionalities while maintaining a unified codebase.</p>
+<h2>What is the Proxy Model in Django?</h2>
+  <p>An inherited proxy model can have a few extra functionalities, methods, and different behaviors than the parent model as defined by the creator or programmer. This can be useful in situations like having multiple types of users inherited from the same User Model, defining new functions for the proxy (new inherited model) which are only meant to be used by the proxy (new inherited model), and so forth. New fields cannot be added to proxy models; the limitation of the proxy model is that you cannot have custom fields there.</p>
+  <h3>Properties for creating a proxy model:</h3>
+  <ul>
+    <li>The proxy model can exactly inherit from one non-abstract model class.</li>
+    <li>It cannot inherit from multiple non-abstract model classes as it cannot provide connections between rows in different tables in the database.</li>
+    <li>It can inherit from any number of abstract class models.</li>
+    <li>The proxy model can inherit from any number of Proxy models that have the same non-abstract parent class.</li>
+  </ul>
+  <h3>What can be done with proxy models in Django?</h3>
+  <ul>
+    <li>We can change the pythonic behavior of the model in such ways as changing the ordering, annotating the model with a different name than the parent, etc.</li>
+    <li>We can have a proxy model with a customized query_set to get relevant data according to the model.</li>
+    <li>We can have a variety of methods, properties, and functions that are unique to that model.</li>
+    <li>We can create multiple types of users which inherit from your base user model and they all can log in, authenticate, and perform different functions.</li>
+  </ul>
 <p>That's it! You can now use FormLink to store and generate PDF files for each user, from your Django web application.</p>
