@@ -40,7 +40,7 @@
   <h3>How to create super user and casual users?</h3>
   <p>create a superuser who can log in to the app and can see the functionalities, for that we will create a superuser with the email (It should be noted that by default, the superuser is assigned the "PATIENT" type upon creation. If we want to change this, it should be done in the settings /admin/.):<code>python manage.py createsuperuser</code></p>
 
-  <p>By moving to the Django shell in the terminal. Also, we can create multiple users of both types from the Django shell:</p>
+<p>By moving to the Django shell in the terminal. Also, we can create multiple users of both types from the Django shell:</p>
   
 ```python
 from proxymodelapp.models import *
@@ -58,6 +58,7 @@ from proxymodelapp.models import *
     user4.save() 
 ```
 
+<p>Or simply create them on by one, using registration forms.</p>
   <h3>What functions are assigned to specific types of users?</h3>
   <ul>
     <li><strong>Type 'DOCTOR'</strong> has access to all forms created by patients, it can only view the patient's first name and last name for each form, but cannot create, delete or edit them.</li>
