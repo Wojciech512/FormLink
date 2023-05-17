@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Karta Pacjenta</title>
+	<style>
+		div {
+			margin: 0 auto;
+			width: 90%;
+			padding: 20px;
+			border: 1px solid rgb(0, 0, 0);
+			border-radius: 10px;
+			font-family: Arial, sans-serif;
+		}
+
+        p{
+            margin: 0 auto;
+			width: 70%;
+			padding: 8px;
+			border: 1px solid rgba(0, 0, 0, 0.295);
+			border-radius: 10px;
+			font-family: Arial, sans-serif;
+            font-size: 18px;
+            text-align: start;
+            margin-left: 0;
+        }
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+            margin: 5px auto;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>Karta Pacjenta</h1>
+            <label>Imię:</label>
+            <p>{{user_profile.name}}</p>
+
+            <label >Nazwisko:</label>
+            <p>{{user_profile.surname}}</p>
+
+            <label>Data urodzenia:</label>
+            <p>{{user_profile.date_of_birth}}</p>
+
+            <label>PESEL:</label>
+            <p>{{user_profile.pesel}}</p>
+
+            <label>Płeć:</label>
+            <p>{{user_profile.sex}}</p>
+
+		    <label>Numer telefonu:</label>
+            <p>+{{user_profile.phone_number}}</p>
+
+		    <label>Wzrost:</label>
+            <p>{{user_profile.height}} cm</p>
+
+		    <label>Adres zamieszkania:</label>
+            <p> {{user_profile.street}} {{user_profile.city}} {{user_profile.postal_code}}</p>
+
+		<h2>Osoba do kontaktu w nagłych przypadkach</h2>
+            {% if user_profile.name_to_contact and user_profile.surname_to_contact%}
+                <label>Imię:</label>
+                {% if user_profile.name_to_contact%}
+                <p>{{user_profile.name_to_contact}}</p>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+                
+                <label>Nazwisko:</label>
+                {% if user_profile.surname_to_contact%}
+                <p>{{user_profile.surname_to_contact}}</p>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+
+                <label>Numer telefonu:</label>
+                {% if user_profile.phone_number_to_contact%}
+                <p>+{{user_profile.phone_number_to_contact}}</p>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+
+                <label>Powiązanie z pacjentem:</label>
+                {% if user_profile.connection_with_patient%}
+                <p>{{user_profile.connection_with_patient}}</p>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            {% else %}
+                <p>Brak danych</p>
+            {% endif %}
+        <h2>Dane medyczne</h2>
+
+            <label>Choroby:</label>
+            {% if user_profile.illness%}
+            <p>{{user_profile.illness}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+            
+            <label>Alergie:</label>
+            {% if user_profile.allergies%}
+            <p>{{user_profile.allergies}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+
+            <label>Uzależnienia:</label>
+            {% if user_profile.addiction%}
+            <p>{{user_profile.addiction}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+
+        <h2>Covid-19</h2>      
+            {% if user_profile.had_covid19 == 'Tak'%}
+            <label>Czy pacjent był chory na Covid-19?</label>
+            <p>{{user_profile.had_covid19}}</p>
+
+            <label>Data wykrycia Choroby Covid-19:</label>
+            <p>{{user_profile.date_of_covid19}}</p>
+            {% else %}
+            <label>Czy pacjent był chory na Covid-19?</label>
+            <p>{{user_profile.had_covid19}}</p>
+            {% endif %}
+
+            {% if user_profile.had_covid19 == 'Tak'%}
+            <label>Czy pacjent szczepiony na Covid-19?</label>
+            <p>{{user_profile.had_covid19}}</p>
+
+            <label>Data ostatniego szczepienia pacjenta:</label>
+            <p>{{user_profile.date_of_covid19}}</p>
+            {% else %}
+            <label>Czy pacjent szczepiony na Covid-19?</label>
+            <p>{{user_profile.had_covid19}}</p>
+            {% endif %}
+
+        <h2>Leki pacjenta</h2>
+        {% if user_profile.name_of_drug %}
+            <label>Nazwa leku:</label>
+            {% if user_profile.name_of_drug%}
+            <p>{{user_profile.name_of_drug}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+
+            <label>Dawka leku:</label>
+            {% if user_profile.drug_dose%}
+            <p>{{user_profile.drug_dose}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+
+            <label>O jakiej porze pacjent powinien zażyć leki:</label>
+            {% if user_profile.m_a_e_drug_dose%}
+            <p>{{user_profile.m_a_e_drug_dose}}</p>
+            {% else %}
+            <p>Brak danych</p>
+            {% endif %}
+        {% else %}
+            <p>Brak danych</p>
+        {% endif %}
+        {% if user_profile.extra_informations%}
+            <h2>Dodatkowe informacje</h2>
+            <p>{{user_profile.extra_informations}}</p>
+        {% else %}
+        {% endif %}
+    </div>
+</body>
+</html>
