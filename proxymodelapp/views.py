@@ -13,6 +13,7 @@ from django.template import RequestContext
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
+
 # Create your views here.
 def startPage(request) : 
     return render(request, "proxymodelapp/start.html" )
@@ -25,16 +26,16 @@ def doctor_registration(request):
             password = form.cleaned_data['password']
             password2 = form.cleaned_data['password2']
 
-            if password and password2 and password != password2:
-                messages.error(request,'Passwords must match')
-                return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
-              
             try:
                 validate_password(password)
             except ValidationError as e:
                 messages.error(request,e)
                 return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
 
+            if password and password2 and password != password2:
+                messages.error(request,'Passwords must match')
+                return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+              
             user = Doctor.objects.create_user(
                 email=form.cleaned_data['email'],
                 password=password
@@ -52,15 +53,18 @@ def patient_registration(request):
                     password = form.cleaned_data['password']
                     password2 = form.cleaned_data['password2']
 
-                    if password and password2 and password != password2:
-                        messages.error(request,'Passwords must match')
-                        return render(request, 'proxymodelapp/patient_registration.html', {'form': form})
-                    
                     try:
                         validate_password(password)
                     except ValidationError as e:
-                        messages.error(request,e)
+                        for error in e.error_list:
+                            #https://docs.djangoproject.com/en/2.0/_modules/django/contrib/auth/password_validation/#MinimumLengthValidator
+                            #messages.error(request,error.message)
+                            messages.error(request,str(error.message).replace("%(min_length)d", "8"))
                         return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+                    
+                    if password and password2 and password != password2:
+                        messages.error(request,'Passwords must match')
+                        return render(request, 'proxymodelapp/patient_registration.html', {'form': form})
                     
                     user = Patient.objects.create_user(
                         email=form.cleaned_data['email'],
