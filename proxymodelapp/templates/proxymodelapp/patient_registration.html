@@ -25,7 +25,7 @@
         <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
             {% for field in form %} 
               {% if field.errors %}
-                <h7><strong>{{ field.label }}:</strong> {{field.errors|striptags }}</h7>
+                <h7>{{field.errors|striptags }}</h7>
               {% endif %}
             {% endfor %}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,6 +33,18 @@
           </button>
         </div>
       {% endif%}
+
+      {% if messages %}
+      <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
+          {% for message in messages %}
+            <h7>{{ message }}</h7>
+          {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     {% endif%}
+
       <div class="form-group col-md-12">
 				<label for="id_username">Email</label>
 				{{ form.email }}
@@ -40,6 +52,10 @@
 			<div class="form-group col-md-12">
 				<label for="id_password">Hasło</label>
 				{{ form.password }}
+			</div>
+      <div class="form-group col-md-12">
+				<label for="id_password">Powtórz hasło</label>
+				{{ form.password2 }}
 			</div>
       <div class=" d-flex justify-content-center">
         <div class="col-md-6 d-flex justify-content-start">

@@ -1,22 +1,32 @@
 from django import forms
 from .models import Doctor, Patient
+from .models import Form
 
 class DoctorRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = Doctor
         fields = ['email', 'password']
 
+    def clean(self):
+        cleaned_data = super().clean()
+        return cleaned_data
 
 class PatientRegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
-
+    password2 = forms.CharField(widget=forms.PasswordInput)
+    
     class Meta:
         model = Patient
         fields = ['email', 'password']
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        return cleaned_data
 
-from .models import Form
+# ====================================================================================================
 
 class ItemForm(forms.ModelForm):
     class Meta:

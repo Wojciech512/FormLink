@@ -36,6 +36,7 @@ class UserAccount(AbstractBaseUser):
 							# Default is user is PATIENT
 							default = Types.PATIENT)
 	email = models.EmailField(max_length = 200 , unique = True)
+	
 	is_active = models.BooleanField(default = True)
 	is_admin = models.BooleanField(default = False)
 	is_staff = models.BooleanField(default = False)
@@ -96,7 +97,6 @@ class Patient(UserAccount):
             self.type = UserAccount.Types.PATIENT
         return super().save(*args, **kwargs)
 
-	
 class DoctorManager(models.Manager):
 	def create_user(self , email , password = None):
 		if not email or len(email) <= 0 :

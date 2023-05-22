@@ -7,6 +7,11 @@ from django.db.models import Max
 import pdfkit
 from django.http import HttpResponse
 from django.template import loader
+from django import forms
+from django.contrib import messages
+from django.template import RequestContext
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 def startPage(request) : 
@@ -15,30 +20,54 @@ def startPage(request) :
 def doctor_registration(request):
     if request.method == 'POST':
         form = DoctorRegistrationForm(request.POST)
+
         if form.is_valid():
+            password = form.cleaned_data['password']
+            password2 = form.cleaned_data['password2']
+
+            if password and password2 and password != password2:
+                messages.error(request,'Passwords must match')
+                return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+              
+            try:
+                validate_password(password)
+            except ValidationError as e:
+                messages.error(request,e)
+                return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+
             user = Doctor.objects.create_user(
                 email=form.cleaned_data['email'],
-                password=form.cleaned_data['password']
+                password=password
             )
-            # Dodaj dodatkową logikę lub przekierowanie
-            return redirect('login-user') 
+            return redirect('login-user')
     else:
         form = DoctorRegistrationForm()
-    
-    return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
 
+    return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
 
 def patient_registration(request):
     if request.method == 'POST':
         form = PatientRegistrationForm(request.POST)
-
         if form.is_valid():
-            user = Patient.objects.create_user(
-                email=form.cleaned_data['email'],
-                password=form.cleaned_data['password']
-            )
-            # Dodaj dodatkową logikę lub przekierowanie
-            return redirect('login-user')
+                    password = form.cleaned_data['password']
+                    password2 = form.cleaned_data['password2']
+
+                    if password and password2 and password != password2:
+                        messages.error(request,'Passwords must match')
+                        return render(request, 'proxymodelapp/patient_registration.html', {'form': form})
+                    
+                    try:
+                        validate_password(password)
+                    except ValidationError as e:
+                        messages.error(request,e)
+                        return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+                    
+                    user = Patient.objects.create_user(
+                        email=form.cleaned_data['email'],
+                        password=password
+                    )
+                    return redirect('login-user')
+            
     else:
         form = PatientRegistrationForm()
     
