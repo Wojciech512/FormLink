@@ -22,14 +22,12 @@
 		<form method="post">
 			{% csrf_token %}
 			{% if form.errors %}
-				<div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
-					<p><strong>Wprowadzono błędne informacje</strong>, upewnij się że wprowadzone przez ciebie dane są poprawne.</p>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-			{% endif %}
-			{% if form.errors %}
+			<div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
+				{{form.non_field_errors|striptags }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
 			{% endif %}
 			<div class="form-group col-md-12">
 				<label for="id_username">Email</label>

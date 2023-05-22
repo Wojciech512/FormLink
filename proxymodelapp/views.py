@@ -31,6 +31,7 @@ def doctor_registration(request):
 def patient_registration(request):
     if request.method == 'POST':
         form = PatientRegistrationForm(request.POST)
+
         if form.is_valid():
             user = Patient.objects.create_user(
                 email=form.cleaned_data['email'],

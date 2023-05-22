@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'proxymodelapp.apps.ProxymodelappConfig', 
+    'proxymodelapp.apps.ProxymodelappConfig',
+    'sass_processor', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,10 +119,55 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 import os
 
-STATIC_URL = 'static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+# STATIC_URL = 'static/'
+# STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# SASS_PROCESSOR_ENABLED = True
+# SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static', 'scss')
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'proxymodelapp/static'),
+# ]
+
+# STATICFILES_FINDERS = [
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'sass_processor.finders.CssFinder',
+    
+# ]
+
+# STATIC_PREPROCESSORS = [
+#     'sass_processor.processors.ScssProcessor',
+# ]
 LOGIN_URL='login-user'
 LOGIN_REDIRECT_URL = 'list'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'proxymodelapp/static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_FINDERS = [
+    # 'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+STATIC_PREPROCESSORS = [
+    'sass_processor.processors.SassProcessor',
+]
+
+SASS_PROCESSOR_ENABLED = True
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'proxymodelapp/static/scss')
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

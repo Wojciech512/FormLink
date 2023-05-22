@@ -23,18 +23,16 @@
       {% csrf_token %}
       {% if form.errors %}
       <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
-        <p><strong>Wprowadzono błędne informacje</strong>, upewnij się że wprowadzone przez ciebie dane są poprawne.</p>
+          {% for field in form %} 
+            {% if field.errors %}
+              <h7><strong>{{ field.label }}:</strong> {{field.errors|striptags }}</h7>
+            {% endif %}
+          {% endfor %}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    {% endif %}
-      {% if form.errors %}
-        <div class="form-group col-md-12">
-          <ul class="errorlist">
-          </ul>
-        </div>
-      {% endif %}
+     {% endif%}
       <div class="form-group col-md-12">
 				<label for="id_username">Email</label>
 				{{ form.email }}
