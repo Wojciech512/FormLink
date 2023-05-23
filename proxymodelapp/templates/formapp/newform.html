@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/accept.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/newform.css' %}">
     <script type="text/javascript" src="{% static 'js/newform.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
         </div>
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <label for="validationCustom03" class="form-label">PESEL</label>
         <input type="text" pattern="[0-9]{11}" placeholder="00000000000" class="form-control" id="pesel" name="pesel" required>
         <div class="valid-feedback">
@@ -68,7 +68,7 @@
         </div>
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <div >
           <label for="validationCustom05" class="form-label">Płeć</label>
           <select class="form-control" id="sex" name="sex" required>
@@ -87,7 +87,7 @@
         </div>
       </div>
       
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <label for="validationCustom06" class="form-label">Numer telefonu</label>
         <input type="tel" class="form-control"placeholder="00 000-000-000" pattern="[0-9]{2} [0-9]{3}-[0-9]{3}-[0-9]{3}" id="phone_number" name="phone_number" required>
         <div class="valid-feedback">
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 ">
+      <div class="col-md-4 py-1">
         <label for="validationCustom07" class="form-label">Wzrost</label>
         <input type="text" pattern="([0-9]{2,3})" class="form-control" id="height" name="height" required>
         <div class="valid-feedback">
@@ -109,7 +109,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 ">
+      <div class="col-md-4 py-1">
         <label for="validationCustom08" class="form-label">Kod pocztowy</label>
         <input type="text" pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000" class="form-control" id="postal_code" name="postal_code" required>
         <div class="valid-feedback">
@@ -120,7 +120,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 ">
+      <div class="col-md-4 py-1">
         <label for="validationCustom09" class="form-label">Miasto</label>
         <input type="text" class="form-control" id="city" name="city" required>
         <div class="valid-feedback">
@@ -131,7 +131,7 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <div>
           <label for="validationCustom10" class="form-label">Ulica i numer domu/lokalu</label>
           <input type="text" class="form-control" id="street" name="street" required>
@@ -145,22 +145,22 @@
       </div>
       
       <!-- contact person  -->
-      <div class="col-md-12">
+      <div class="col-md-12 py-1">
         <h5>Dane kontaktowe do osoby zaufanej</h5>
         <hr/>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Imię</label>
         <input type="text" class="form-control" id="name_to_contact" name="name_to_contact" onchange="enableDisableInput('name_to_contact')">
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Nazwisko</label>
         <input type="text" class="form-control" id="surname_to_contact" name="surname_to_contact" onchange="enableDisableInput('surname_to_contact')">
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="validationCustom06" class="form-label">Numer telefonu</label>
         <input type="tel" class="form-control"placeholder="00 000-000-000" pattern="[0-9]{2} [0-9]{3}-[0-9]{3}-[0-9]{3}" id="phone_number_to_contact" name="phone_number_to_contact" disabled="disabled">
         <div class="invalid-feedback">
@@ -168,38 +168,38 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Powiązanie z pacjentem</label>
         <input type="text" class="form-control" id="connection_with_patient" placeholder="Mąż, żona, syn, córka..." name="connection_with_patient" disabled="disabled">
       </div>
 
       <!-- medical data -->
-      <div class="col-md-12">
+      <div class="col-md-12 py-1">
         <h5>Dane medyczne</h5>
         <hr/>
       </div>
       
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Choroby</label>
         <textarea type="text" class="form-control" id="illness" name="illness" rows="2"></textarea>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Alergie</label>
         <textarea type="text" class="form-control" id="allergies" name="allergies" rows="2"></textarea>
       </div>
       
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Uzależnienia</label>
         <textarea type="text" class="form-control" id="addiction" name="addiction" rows="2"></textarea>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-12 py-1">
         <h5>Covid-19</h5>
         <hr/>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Czy zachorowałeś na Covid-19?</label>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="had_covid19" id="had_covid19" value="Tak" onchange="EnableDisableTextBoxNext('Yes')" required>
@@ -218,7 +218,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 datepicker">
+      <div class="col-md-4 datepicker py-1">
         <label for="validationCustom03" class="form-label">Kiedy wykryto chorobę?</label>
         <input type="date" class="form-control" id="date_of_covid19" name="date_of_covid19" disabled="disabled" required>
         <div class="invalid-feedback">
@@ -226,7 +226,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 py-1">
         <label for="" class="form-label">Czy byłeś szczepiony na Covid-19?</label>
         <div class="form-check" >
           <input class="form-check-input" type="radio" name="covid19_vaccinated" id="covid19_vaccinated" value="Tak" onchange="EnableDisableTextBoxNext2('Yes')" required>
@@ -235,7 +235,7 @@
           </label>
         </div>
 
-        <div class="form-check">
+        <div class="form-check py-1">
           <input class="form-check-input" type="radio" name="covid19_vaccinated" id="covid19_vaccinated" value="Nie" onchange="EnableDisableTextBoxNext2('No')" required>
           <label class="form-check-label" for="had_covid19">
             Nie
@@ -246,7 +246,7 @@
         </div>
       </div>
 
-      <div class="col-md-4 datepicker">
+      <div class="col-md-4 datepicker py-1">
         <label for="validationCustom03" class="form-label">Data ostatniego szczepienia.</label>
         <input type="date" class="form-control" id="date_of_covid19_vaccinated" name="date_of_covid19_vaccinated" disabled="disabled" required>
         <div class="invalid-feedback">
@@ -255,22 +255,22 @@
       </div>
 
       <!-- patient drugs (podstawowo 1 możliwość dodawania maksymalnie 10 leków)-->
-      <div class="col-md-12">
+      <div class="col-md-12 py-1">
         <h5>Leki pacjenta</h5>
         <hr/>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <label for="validationCustom01" class="form-label">Nazwa leku</label>
         <input type="text" class="form-control" id="name_of_drug" name="name_of_drug" onchange="enableDisableInput2('name_of_drug')">
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <label for="validationCustom01" class="form-label">Dawka leku</label>
         <input type="text" class="form-control" placeholder="np.: 2 tabletki, 10 mg, " id="drug_dose" name="drug_dose" disabled="disabled">
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 py-1">
         <label for="validationCustom05" class="form">O jakiej porze pacjent powinien zażyć leki?</label>
         <div>
           <select class="form-control" id="m_a_e_drug_dose" name="m_a_e_drug_dose" disabled="disabled" placeholder="Pora dnia...">
@@ -301,7 +301,7 @@
         <hr/>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 py-1">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
           <label class="form-check-label" for="invalidCheck">
@@ -313,11 +313,11 @@
         </div>
       </div>
 
-      <div class="col-6">
-        <button class="btn" type="submit">Utwórz formularz</button>
+      <div class="col-6 d-flex justify-content-start py-3">
+        <button class="btn btn-outline-success " type="submit">Utwórz formularz</button>
       </div>
-      <div class="col-6 d-flex justify-content-end">
-        <a href="{% url 'list' %}" class="btn">Przeglądaj PDF</a>
+      <div class="col-6 d-flex justify-content-end py-3">
+        <a href="{% url 'list' %}" class="btn btn-outline-dark">Przeglądaj PDF</a>
       </div>
     </form>
   </div>

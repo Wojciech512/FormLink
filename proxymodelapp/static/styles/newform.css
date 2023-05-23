@@ -1,4 +1,4 @@
-hr {
+/* hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
@@ -20,18 +20,27 @@ hr {
   }
 
   /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
 }
 a {
   color: #000000;
   text-decoration: none;
-}
+}  */
 
+.container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}

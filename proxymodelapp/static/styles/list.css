@@ -4,7 +4,7 @@ hr {
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-.btn {
+/* .btn {
     border: 2px solid rgb(0, 0, 0);
     padding: 0.375rem 2.75rem;
     text-transform: uppercase;
@@ -32,4 +32,24 @@ a {
 
 .white{
     color: white;
+} */
+.container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
