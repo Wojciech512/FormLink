@@ -68,4 +68,4 @@ from proxymodelapp.models import *
   <li>Enter the path you previously copied and click "OK" to save the changes:<br>
       <img src="./img/img7.png" alt="zdjęcie 7"></li>
 </ol>
-<p>That's it! You can now use FormLink to store and generate PDF files for each user, from your Django web application.</p>
+<p>That's it! You can now add more functions to FormLink.</p>
