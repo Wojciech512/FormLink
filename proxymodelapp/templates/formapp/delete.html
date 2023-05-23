@@ -10,20 +10,23 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <form method="POST" class="row m-4">
+    <div class="container col-md-4">
+        <form method="POST">
             {% csrf_token %}
             <div class="col-md-12">
-                <h2>Jesteś pewien, że chcesz usunąć formularz?</h2>
-                <hr/>
+                <h4>Jesteś pewien, że chcesz usunąć formularz?</h4>
+                <hr>
             </div>
-            <div class="col-md-4 d-flex justify-content-start">
-                <button type="submit" class="btn trans btn-success">Tak</button>
+            <div class="d-flex justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success py-2">Tak</button>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="{% url 'list' %}" class="btn btn-danger py-2">Nie</a>
+                </div>
             </div>
-            <div class="col-6 d-flex justify-content-start">
-                <a href="{% url 'list' %}" class="btn trans btn-danger">Nie</a>
-              </div>
         </form>
     </div>
+    
 </body>
 </html>
