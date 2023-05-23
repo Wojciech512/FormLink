@@ -41,8 +41,10 @@ from proxymodelapp.models import *
   <h3>What functions are assigned to specific types of users?</h3>
   <ul>
     <li><strong>Type 'DOCTOR'</strong> has access to all forms created by patients, it can only view the patient's first name and last name for each form, but cannot create, delete or edit them.</li>
+  
   <img src="./img/img9.png" alt="zdjęcie 9">
     <li><strong> Type 'PATIENT'</strong>  creates forms, has access only to their own created objects, and can perform functions such as preview, delete, and edit on them.
+      
   <img src="./img/img10.png" alt="zdjęcie 10">
   </li>
   </ul>
