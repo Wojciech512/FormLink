@@ -22,27 +22,27 @@
     <form method="POST">
       {% csrf_token %}
       {% if form.errors %}
-        <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
-            {% for field in form %} 
-              {% if field.errors %}
-                <h7>{{field.errors|striptags }}</h7>
-              {% endif %}
-            {% endfor %}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      {% endif%}
-
-      {% if messages %}
       <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
-          {% for message in messages %}
-            <h7>{{ message }}</h7>
+          {% for field in form %} 
+            {% if field.errors %}
+              <h7>{{field.errors|striptags }}</h7>
+            {% endif %}
           {% endfor %}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+     {% endif%}   
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger col-md-12 d-flex alert-dismissible fade show" role="alert">
+          <h7>{{message}}</h7>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
      {% endif%}
 
       <div class="form-group col-md-12">

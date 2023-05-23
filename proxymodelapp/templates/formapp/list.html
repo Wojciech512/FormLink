@@ -25,19 +25,31 @@
     <div class="container">
         <div class="row m-2">
             <div class="col-md-12">
-                <h2>Podgląd dostępnych plików PDF,<br> dla użytkownika: <strong>{{user}}</strong>,<br> rola: <strong>{% if user.is_authenticated %}{{type|lower}}{% endif %}</strong></h2>
+                <h2><strong>FormLink</strong></h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-md-12">
+                <h5>Witaj, <strong>{{user}}</strong></h5>
+                <p>Rola: <strong>{% if user.is_authenticated %}{{type|lower|title}}{% endif %}</strong></p>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-md-12">
+                <h2>Podgląd dostępnych plików PDF:</h2>
             </div>
         </div>
         <hr/>
         {% if forms.0.pseudo_id >= 0 %}
             {% for form in forms %}
-            <div class="row m-3  justify-content-center">
-                <div class="col-md-4 d-flex justify-content-start">
+            <div class="row m-3  justify-content-around">
+                <div class="col-md-5 d-flex justify-content-around">
                     {{ forloop.counter }}.
                     <!-- {{form.id}}.
                     {{form.pseudo_id }}. -->
-                    {{form.name}}
-                    {{form.surname}}  
+                    {{form.name|title}}
+                    {{form.surname|title}}  
                 </div>
                 {% if user.type|lower == 'patient' %}
                     <div class="col-md-2 d-flex justify-content-center">
@@ -47,6 +59,7 @@
                 <div class="col-md-2 d-flex justify-content-center">
                     <a href="{% url 'viewform' form.id %}" class="btn trans btn-info">Podgląd</a>
                 </div>
+                
                 <div class="col-md-3 d-flex justify-content-center">
                     <a href="/{{form.id}}" class="btn trans btn-success">Pobierz PDF</a>
                 </div>

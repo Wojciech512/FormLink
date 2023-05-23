@@ -29,7 +29,10 @@ def doctor_registration(request):
             try:
                 validate_password(password)
             except ValidationError as e:
-                messages.error(request,e)
+                for error in e.error_list:
+                    #https://docs.djangoproject.com/en/2.0/_modules/django/contrib/auth/password_validation/#MinimumLengthValidator
+                    #messages.error(request,error.message)
+                    messages.error(request,str(error.message).replace("%(min_length)d", "8"))
                 return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
 
             if password and password2 and password != password2:
@@ -60,7 +63,7 @@ def patient_registration(request):
                             #https://docs.djangoproject.com/en/2.0/_modules/django/contrib/auth/password_validation/#MinimumLengthValidator
                             #messages.error(request,error.message)
                             messages.error(request,str(error.message).replace("%(min_length)d", "8"))
-                        return render(request, 'proxymodelapp/doctor_registration.html', {'form': form})
+                        return render(request, 'proxymodelapp/patient_registration.html', {'form': form})
                     
                     if password and password2 and password != password2:
                         messages.error(request,'Passwords must match')
@@ -154,8 +157,17 @@ def list_pdfs(request):
     if request.user.is_authenticated:
         if request.user.type == UserAccount.Types.DOCTOR:
             forms = Form.objects.all()
+            for form in forms:
+                unwanted_marks = "(),'"
+                relocation_map = str.maketrans("", "", unwanted_marks)
+                form.name = form.name.translate(relocation_map)
         else:
             forms = Form.objects.filter(patient=request.user)
+            for form in forms:
+                unwanted_marks = "(),'"
+                relocation_map = str.maketrans("", "", unwanted_marks)
+                form.name = form.name.translate(relocation_map)
+            
         context_dict = {'user': request.user,'forms':forms,'type': request.user.type}
     else:
         context_dict= {'user': request.user,'forms':forms}

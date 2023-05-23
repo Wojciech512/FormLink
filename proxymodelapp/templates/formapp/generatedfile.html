@@ -41,10 +41,10 @@
 	<div>
 		<h1>Karta Pacjenta</h1>
             <label>Imię:</label>
-            <p>{{user_profile.name}}</p>
+            <p>{{user_profile.name|title}}</p>
 
             <label >Nazwisko:</label>
-            <p>{{user_profile.surname}}</p>
+            <p>{{user_profile.surname|title}}</p>
 
             <label>Data urodzenia:</label>
             <p>{{user_profile.date_of_birth}}</p>
@@ -68,14 +68,14 @@
             {% if user_profile.name_to_contact and user_profile.surname_to_contact%}
                 <label>Imię:</label>
                 {% if user_profile.name_to_contact%}
-                <p>{{user_profile.name_to_contact}}</p>
+                <p>{{user_profile.name_to_contact|title}}</p>
                 {% else %}
                 <p>Brak danych</p>
                 {% endif %}
                 
                 <label>Nazwisko:</label>
                 {% if user_profile.surname_to_contact%}
-                <p>{{user_profile.surname_to_contact}}</p>
+                <p>{{user_profile.surname_to_contact|title}}</p>
                 {% else %}
                 <p>Brak danych</p>
                 {% endif %}
