@@ -17,8 +17,6 @@
       <img src="./img/img6.png" alt="zdjęcie 6"></li>
   <li>Enter the path you previously copied and click "OK" to save the changes:<br>
       <img src="./img/img7.png" alt="zdjęcie 7"></li>
-  <li>Finally, in the views.py file, add the absolute path to the "wkhtmltopdf.exe" file on line 86:<br>
-      <img src="./img/img8.png" alt="zdjęcie 8"></li>
 </ol>
 <h3>What is the Proxy Model in Django?</h3>
   <p>An inherited proxy model can have a few extra functionalities, methods, and different behaviors than the parent model as defined by the creator or programmer. This can be useful in situations like having multiple types of users inherited from the same User Model, defining new functions for the proxy (new inherited model) which are only meant to be used by the proxy (new inherited model), and so forth. New fields cannot be added to proxy models; the limitation of the proxy model is that you cannot have custom fields there.</p>
