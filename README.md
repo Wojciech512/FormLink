@@ -4,7 +4,7 @@
   <li>Open the console window and run the command: <code>pip install django</code></li>
   <li>then run the command: <code>pip install libsass django-compressor django-sass-processor</code></li>
   <li>also run the command: <code>pip install pdfkit</code></li>
-  <p>You are ready to go!</p>
+  <li>You are ready to go!</li>
 </ol>
 <h3>What is the Proxy Model in Django?</h3>
   <p>An inherited proxy model can have a few extra functionalities, methods, and different behaviors than the parent model as defined by the creator or programmer. This can be useful in situations like having multiple types of users inherited from the same User Model, defining new functions for the proxy (new inherited model) which are only meant to be used by the proxy (new inherited model), and so forth. New fields cannot be added to proxy models; the limitation of the proxy model is that you cannot have custom fields there.</p>
