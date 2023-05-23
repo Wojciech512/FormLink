@@ -190,6 +190,9 @@ def delete_form(request,id):
 @login_required
 def view_form(request,id):
     user_profile = Form.objects.get(pk=id)
+    unwanted_marks = "(),'"
+    relocation_map = str.maketrans("", "", unwanted_marks)
+    user_profile.name = user_profile.name.translate(relocation_map)
     return render(request,'formapp/generatedfile.html',{'user_profile':user_profile})
 
 @login_required

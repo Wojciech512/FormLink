@@ -1,177 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    
 <head>
-	<title>Karta Pacjenta</title>
-	<style>
-		div {
-			margin: 0 auto;
-			width: 90%;
-			padding: 20px;
-			border: 1px solid rgb(0, 0, 0);
-			border-radius: 10px;
-			font-family: Arial, sans-serif;
-		}
-
-        p{
-            margin: 0 auto;
-			width: 70%;
-			padding: 8px;
-			border: 1px solid rgba(0, 0, 0, 0.295);
-			border-radius: 10px;
-			font-family: Arial, sans-serif;
-            font-size: 18px;
-            text-align: start;
-            margin-left: 0;
-        }
-
-		label {
-			display: block;
-			margin-bottom: 5px;
-            margin: 5px auto;
-		}
-
-		h1 {
-			text-align: center;
-			font-size: 24px;
-			margin-bottom: 20px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karta Pacjenta</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .container {
+    background-color: #fff;
+    border: 3px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+  </style>
 </head>
+
 <body>
-	<div>
-		<h1>Karta Pacjenta</h1>
-            <label>Imię:</label>
-            <p>{{user_profile.name|title}}</p>
-
-            <label >Nazwisko:</label>
-            <p>{{user_profile.surname|title}}</p>
-
-            <label>Data urodzenia:</label>
-            <p>{{user_profile.date_of_birth}}</p>
-
-            <label>PESEL:</label>
-            <p>{{user_profile.pesel}}</p>
-
-            <label>Płeć:</label>
-            <p>{{user_profile.sex}}</p>
-
-		    <label>Numer telefonu:</label>
-            <p>+{{user_profile.phone_number}}</p>
-
-		    <label>Wzrost:</label>
-            <p>{{user_profile.height}} cm</p>
-
-		    <label>Adres zamieszkania:</label>
-            <p> {{user_profile.street}} {{user_profile.city}} {{user_profile.postal_code}}</p>
-
-		<h2>Osoba do kontaktu w nagłych przypadkach</h2>
-            {% if user_profile.name_to_contact and user_profile.surname_to_contact%}
-                <label>Imię:</label>
-                {% if user_profile.name_to_contact%}
-                <p>{{user_profile.name_to_contact|title}}</p>
-                {% else %}
-                <p>Brak danych</p>
-                {% endif %}
-                
-                <label>Nazwisko:</label>
-                {% if user_profile.surname_to_contact%}
-                <p>{{user_profile.surname_to_contact|title}}</p>
-                {% else %}
-                <p>Brak danych</p>
-                {% endif %}
-
-                <label>Numer telefonu:</label>
-                {% if user_profile.phone_number_to_contact%}
-                <p>+{{user_profile.phone_number_to_contact}}</p>
-                {% else %}
-                <p>Brak danych</p>
-                {% endif %}
-
-                <label>Powiązanie z pacjentem:</label>
-                {% if user_profile.connection_with_patient%}
-                <p>{{user_profile.connection_with_patient}}</p>
-                {% else %}
-                <p>Brak danych</p>
-                {% endif %}
-            {% else %}
-                <p>Brak danych</p>
-            {% endif %}
-        <h2>Dane medyczne</h2>
-
-            <label>Choroby:</label>
-            {% if user_profile.illness%}
-            <p>{{user_profile.illness}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-            
-            <label>Alergie:</label>
-            {% if user_profile.allergies%}
-            <p>{{user_profile.allergies}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-
-            <label>Uzależnienia:</label>
-            {% if user_profile.addiction%}
-            <p>{{user_profile.addiction}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-
-        <h2>Covid-19</h2>      
-            {% if user_profile.had_covid19 == 'Tak'%}
-            <label>Czy pacjent był chory na Covid-19?</label>
-            <p>{{user_profile.had_covid19}}</p>
-
-            <label>Data wykrycia Choroby Covid-19:</label>
-            <p>{{user_profile.date_of_covid19}}</p>
-            {% else %}
-            <label>Czy pacjent był chory na Covid-19?</label>
-            <p>{{user_profile.had_covid19}}</p>
-            {% endif %}
-
-            {% if user_profile.had_covid19 == 'Tak'%}
-            <label>Czy pacjent szczepiony na Covid-19?</label>
-            <p>{{user_profile.had_covid19}}</p>
-
-            <label>Data ostatniego szczepienia pacjenta:</label>
-            <p>{{user_profile.date_of_covid19}}</p>
-            {% else %}
-            <label>Czy pacjent szczepiony na Covid-19?</label>
-            <p>{{user_profile.had_covid19}}</p>
-            {% endif %}
-
-        <h2>Leki pacjenta</h2>
-        {% if user_profile.name_of_drug %}
-            <label>Nazwa leku:</label>
-            {% if user_profile.name_of_drug%}
-            <p>{{user_profile.name_of_drug}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-
-            <label>Dawka leku:</label>
-            {% if user_profile.drug_dose%}
-            <p>{{user_profile.drug_dose}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-
-            <label>O jakiej porze pacjent powinien zażyć leki:</label>
-            {% if user_profile.m_a_e_drug_dose%}
-            <p>{{user_profile.m_a_e_drug_dose}}</p>
-            {% else %}
-            <p>Brak danych</p>
-            {% endif %}
-        {% else %}
-            <p>Brak danych</p>
-        {% endif %}
-        {% if user_profile.extra_informations%}
-            <h2>Dodatkowe informacje</h2>
-            <p>{{user_profile.extra_informations}}</p>
-        {% else %}
-        {% endif %}
+  <div class="container">
+    <h1 class="mt-4">Karta Pacjenta</h1>
+    <hr>
+    <div class="form-group">
+      <h5>Imię:</h5>
+      <p class="form-control-static">{{user_profile.name|title}}</p>
     </div>
+
+    <div class="form-group">
+      <h5>Nazwisko:</h5>
+      <p class="form-control-static">{{user_profile.surname|title}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Data urodzenia:</h5>
+      <p class="form-control-static">{{user_profile.date_of_birth}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>PESEL:</h5>
+      <p class="form-control-static">{{user_profile.pesel}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Płeć:</h5>
+      <p class="form-control-static">{{user_profile.sex}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Numer telefonu:</h5>
+      <p class="form-control-static">+{{user_profile.phone_number}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Wzrost:</h5>
+      <p class="form-control-static">{{user_profile.height}} cm</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Adres zamieszkania:</h5>
+      <p class="form-control-static">{{user_profile.street}} {{user_profile.city}} {{user_profile.postal_code}}</p>
+    </div>
+
+    <h2>Osoba do kontaktu w nagłych przypadkach</h2>
+    <hr>
+    {% if user_profile.name_to_contact and user_profile.surname_to_contact %}
+    <div class="form-group">
+      <h5>Imię:</h5>
+      {% if user_profile.name_to_contact %}
+      <p class="form-control-static">{{user_profile.name_to_contact|title}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Nazwisko:</h5>
+      {% if user_profile.surname_to_contact %}
+      <p class="form-control-static">{{user_profile.surname_to_contact|title}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Numer telefonu:</h5>
+      {% if user_profile.phone_number_to_contact %}
+      <p class="form-control-static">+{{user_profile.phone_number_to_contact}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Powiązanie z pacjentem:</h5>
+      {% if user_profile.connection_with_patient %}
+      <p class="form-control-static">{{user_profile.connection_with_patient}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    {% else %}
+    <p class="form-control-static">Brak danych</p>
+    {% endif %}
+
+    <h2>Dane medyczne</h2>
+    <hr>
+    <div class="form-group">
+      <h5>Choroby:</h5>
+      {% if user_profile.illness %}
+      <p class="form-control-static">{{user_profile.illness}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Alergie:</h5>
+      {% if user_profile.allergies %}
+      <p class="form-control-static">{{user_profile.allergies}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Uzależnienia:</h5>
+      {% if user_profile.addiction %}
+      <p class="form-control-static">{{user_profile.addiction}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <h2>Covid-19</h2>
+    <hr>
+    {% if user_profile.had_covid19 == 'Tak' %}
+    <div class="form-group">
+      <h5>Czy pacjent był chory na Covid-19?</h5>
+      <p class="form-control-static">{{user_profile.had_covid19}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Data wykrycia Choroby Covid-19:</h5>
+      <p class="form-control-static">{{user_profile.date_of_covid19}}</p>
+    </div>
+
+    {% else %}
+    <div class="form-group">
+      <h5>Czy pacjent był chory na Covid-19?</h5>
+      <p class="form-control-static">{{user_profile.had_covid19}}</p>
+    </div>
+    {% endif %}
+
+    {% if user_profile.had_covid19 == 'Tak' %}
+    <div class="form-group">
+      <h5>Czy pacjent szczepiony na Covid-19?</h5>
+      <p class="form-control-static">{{user_profile.had_covid19}}</p>
+    </div>
+
+    <div class="form-group">
+      <h5>Data ostatniego szczepienia pacjenta:</h5>
+      <p class="form-control-static">{{user_profile.date_of_covid19}}</p>
+    </div>
+
+    {% else %}
+    <div class="form-group">
+      <h5>Czy pacjent szczepiony na Covid-19?</h5>
+      <p class="form-control-static">{{user_profile.had_covid19}}</p>
+    </div>
+    {% endif %}
+
+    <h2>Leki pacjenta</h2>
+    <hr>
+    {% if user_profile.name_of_drug %}
+    <div class="form-group">
+      <h5>Nazwa leku:</h5>
+      {% if user_profile.name_of_drug %}
+      <p class="form-control-static">{{user_profile.name_of_drug}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>Dawka leku:</h5>
+      {% if user_profile.drug_dose %}
+      <p class="form-control-static">{{user_profile.drug_dose}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <h5>O jakiej porze pacjent powinien zażyć leki:</h5>
+      {% if user_profile.m_a_e_drug_dose %}
+      <p class="form-control-static">{{user_profile.m_a_e_drug_dose}}</p>
+      {% else %}
+      <p class="form-control-static">Brak danych</p>
+      {% endif %}
+    </div>
+
+    {% else %}
+    <p class="form-control-static">Brak danych</p>
+    {% endif %}
+
+    {% if user_profile.extra_informations %}
+    <h2>Dodatkowe informacje</h2>
+    <hr>
+    <p class="form-control-static">{{user_profile.extra_informations}}</p>
+    {% else %}
+    {% endif %}
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
