@@ -6,7 +6,7 @@
   <li>also run the command: <code>pip install pdfkit</code></li>
   <li>Copy the ProxyModel folder path</li>
   <li>Use <code>cd 'paste folder path here'</code></li>
-  <li>Use <code>cd 'python manage.py runserver'</code></li>
+  <li>Use <code>cd python manage.py runserver</code></li>
   <li>You are ready to go!</li>
 </ol>
 <h3>What is the Proxy Model in Django?</h3>
