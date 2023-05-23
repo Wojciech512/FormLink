@@ -201,8 +201,7 @@ def download_form(request,id):
         'page-size':'Letter',
         'encoding':"UTF-8",
     }
-    
-    config = pdfkit.configuration(wkhtmltopdf=r'C:/Users/wwyle/OneDrive/Pulpit/wkhtmltox/bin/wkhtmltopdf.exe')
+    config = pdfkit.configuration(wkhtmltopdf=r'wkhtmltox/bin/wkhtmltopdf.exe')
  
     pdf = pdfkit.from_string(html,False,options=options,configuration=config)
     response = HttpResponse(pdf,content_type='proxymodel/proxymodelapp')
