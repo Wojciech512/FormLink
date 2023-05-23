@@ -7,7 +7,7 @@
   <li>Copy the ProxyModel folder path</li>
   <li>Use <code>cd 'paste folder path here'</code></li>
   <li>Use <code>cd python manage.py runserver</code></li>
-  <li>You are ready to go!</li>
+  <li>Console will print yout localhost link, use it to open the app!</li>
 </ol>
 <h3>What is the Proxy Model in Django?</h3>
   <p>An inherited proxy model can have a few extra functionalities, methods, and different behaviors than the parent model as defined by the creator or programmer. This can be useful in situations like having multiple types of users inherited from the same User Model, defining new functions for the proxy (new inherited model) which are only meant to be used by the proxy (new inherited model), and so forth. New fields cannot be added to proxy models; the limitation of the proxy model is that you cannot have custom fields there.</p>
