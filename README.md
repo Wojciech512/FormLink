@@ -1,23 +1,4 @@
 <h1>FormLink</h1>
-<p>To use FormLink, you need to follow these steps:</p>
-<ol>
-  <li>Open the console window and run the command: <code>pip install pdfkit</code></li>
-  <li>Download the wkhtmltopdf program from the website: <a href="https://wkhtmltopdf.org/downloads.html">https://wkhtmltopdf.org/downloads.html</a><br>
-      <img src="./img/img1.png" alt="zdjęcie 1"></li>
-  <li>Extract the downloaded file and install the program.</li>
-  <li>In the bin folder, you will find configuration files needed for the application to work properly. To install the wkhtmltopdf program, copy the path of the bin folder and add it to the system environment variables on Windows:<br>
-      <img src="./img/img2.png" alt="zdjęcie 2"></li>
-  <li>In the Windows Settings search bar, type "Environment Variables":<br>
-      <img src="./img/img3.png" alt="zdjęcie 3"></li>
-  <li>Select the "Edit the system environment variables" option and click the "Environment Variables" button:<br>
-      <img src="./img/img4.png" alt="zdjęcie 4"></li>
-  <li>Under the "System variables" section, select the "Path" variable and click the "Edit" button:<br>
-      <img src="./img/img5.png" alt="zdjęcie 5"></li>
-  <li>Click the "New" button to add a new environment variable:<br>
-      <img src="./img/img6.png" alt="zdjęcie 6"></li>
-  <li>Enter the path you previously copied and click "OK" to save the changes:<br>
-      <img src="./img/img7.png" alt="zdjęcie 7"></li>
-</ol>
 <h3>What is the Proxy Model in Django?</h3>
   <p>An inherited proxy model can have a few extra functionalities, methods, and different behaviors than the parent model as defined by the creator or programmer. This can be useful in situations like having multiple types of users inherited from the same User Model, defining new functions for the proxy (new inherited model) which are only meant to be used by the proxy (new inherited model), and so forth. New fields cannot be added to proxy models; the limitation of the proxy model is that you cannot have custom fields there.</p>
   <h3>Properties for creating a proxy model:</h3>
@@ -65,4 +46,24 @@ from proxymodelapp.models import *
   <img src="./img/img10.png" alt="zdjęcie 10">
   </li>
   </ul>
+  
+  <h3>To edit FormLink form functionalities, you need to follow these steps:</h3>
+<ol>
+  <li>Open the console window and run the command: <code>pip install pdfkit</code></li>
+  <li>Download the wkhtmltopdf program from the website: <a href="https://wkhtmltopdf.org/downloads.html">https://wkhtmltopdf.org/downloads.html</a><br>
+      <img src="./img/img1.png" alt="zdjęcie 1"></li>
+  <li>Extract the downloaded file and install the program.</li>
+  <li>In the bin folder, you will find configuration files needed for the application to work properly. To install the wkhtmltopdf program, copy the path of the bin folder and add it to the system environment variables on Windows:<br>
+      <img src="./img/img2.png" alt="zdjęcie 2"></li>
+  <li>In the Windows Settings search bar, type "Environment Variables":<br>
+      <img src="./img/img3.png" alt="zdjęcie 3"></li>
+  <li>Select the "Edit the system environment variables" option and click the "Environment Variables" button:<br>
+      <img src="./img/img4.png" alt="zdjęcie 4"></li>
+  <li>Under the "System variables" section, select the "Path" variable and click the "Edit" button:<br>
+      <img src="./img/img5.png" alt="zdjęcie 5"></li>
+  <li>Click the "New" button to add a new environment variable:<br>
+      <img src="./img/img6.png" alt="zdjęcie 6"></li>
+  <li>Enter the path you previously copied and click "OK" to save the changes:<br>
+      <img src="./img/img7.png" alt="zdjęcie 7"></li>
+</ol>
 <p>That's it! You can now use FormLink to store and generate PDF files for each user, from your Django web application.</p>
