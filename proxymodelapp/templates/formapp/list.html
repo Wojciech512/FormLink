@@ -89,17 +89,25 @@
             <hr/>
         {%endif%}
         <div class="row m-3">
+            {% if user.type|lower == 'patient' %}
             <div class="col-md-6 d-flex justify-content-start">
                 <a href="{% url 'newform' %}" class="btn btn-outline-dark" >Utwórz nowy formularz</a>
             </div>
-            {% if user.is_authenticated %}
                 <div class="col-md-6 d-flex justify-content-end">
                     <form method="POST" >
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Wyloguj się</button>
                     </form>
                 </div>
-            {% endif %}
+            {%else%}
+                <div class="col-md-12 d-flex justify-content-end">
+                    <form method="POST" >
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Wyloguj się</button>
+                    </form>
+                </div>
+            {%endif%}
+
         </div>
     </div>
     {% else %}
